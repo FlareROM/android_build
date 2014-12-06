@@ -1926,6 +1926,13 @@ bacon: otapackage
 	$(hide) $(MD5SUM) $(FlareROM_TARGET_PACKAGE) > $(FlareROM_TARGET_PACKAGE).md5sum
 	@echo -e ${CL_CYN}"Package Complete: $(FlareROM_TARGET_PACKAGE)"${CL_RST}
 
+ifeq ($(CHANGELOG),true)
+# Generate changelog
+	@echo -e ${CL_GRN}"Generating Changelog"${CL_RST}
+	$(hide) ./vendor/cm/utils/changelog.sh
+	$(hide) mv $(PRODUCT_OUT)/Changelog.txt $(PRODUCT_OUT)/$(TARGET_PRODUCT)-Changelog.txt
+endif
+
 # -----------------------------------------------------------------
 # The factory package
 
