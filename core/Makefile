@@ -1927,7 +1927,8 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) ln -f $(INTERNAL_OTA_PACKAGE_TARGET) $(FlareROM_TARGET_PACKAGE)
 	$(hide) $(MD5SUM) $(FlareROM_TARGET_PACKAGE) > $(FlareROM_TARGET_PACKAGE).md5sum
-	@echo -e ${CL_CYN}"Package Complete: $(FlareROM_TARGET_PACKAGE)"${CL_RST}
+	$(hide) ./vendor/cm/tools/flarerom.sh 	
+	@echo -e ${CL_CYN}"FlareROM Package Complete: $(FlareROM_TARGET_PACKAGE)"${CL_RST}
  
 # -----------------------------------------------------------------
 # The factory package
